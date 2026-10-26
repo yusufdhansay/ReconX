@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Generated reports (keep folder, ignore outputs)
+reports/*.json
+reports/*.html
+!reports/.gitkeep
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.log
