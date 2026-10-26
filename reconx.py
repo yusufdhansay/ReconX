@@ -8,6 +8,7 @@ import argparse
 import os
 import sys
 
+from modules import subdomain_enum, whois_lookup
 from utils import logger
 from utils.banner import print_banner
 
@@ -54,7 +55,16 @@ def run(domain, output_dir):
 
     logger.info(f"Target domain: {domain}")
     logger.info(f"Report output directory: {output_dir}")
-    logger.warn("Recon modules are not wired in yet (Phase 1 skeleton).")
+
+    results = {"domain": domain}
+
+    # Subdomain enumeration
+    results["subdomains"] = subdomain_enum.enumerate_subdomains(domain)
+
+    # WHOIS lookup
+    results["whois"] = whois_lookup.lookup(domain)
+
+    return results
 
 
 def main():
