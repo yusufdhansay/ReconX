@@ -8,7 +8,13 @@ import argparse
 import os
 import sys
 
-from modules import port_scan, subdomain_enum, tech_detect, whois_lookup
+from modules import (
+    osint_email,
+    port_scan,
+    subdomain_enum,
+    tech_detect,
+    whois_lookup,
+)
 from utils import logger
 from utils.banner import print_banner
 
@@ -69,6 +75,9 @@ def run(domain, output_dir):
 
     # Tech stack detection
     results["tech"] = tech_detect.detect(domain)
+
+    # Email OSINT
+    results["emails"] = osint_email.harvest(domain)
 
     return results
 
