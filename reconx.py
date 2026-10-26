@@ -15,7 +15,7 @@ from modules import (
     tech_detect,
     whois_lookup,
 )
-from utils import logger
+from utils import logger, report
 from utils.banner import print_banner
 
 
@@ -78,6 +78,9 @@ def run(domain, output_dir):
 
     # Email OSINT
     results["emails"] = osint_email.harvest(domain)
+
+    # Reports (JSON + HTML)
+    report.generate(results, output_dir, domain)
 
     return results
 
