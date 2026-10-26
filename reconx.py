@@ -8,7 +8,7 @@ import argparse
 import os
 import sys
 
-from modules import subdomain_enum, whois_lookup
+from modules import port_scan, subdomain_enum, tech_detect, whois_lookup
 from utils import logger
 from utils.banner import print_banner
 
@@ -63,6 +63,12 @@ def run(domain, output_dir):
 
     # WHOIS lookup
     results["whois"] = whois_lookup.lookup(domain)
+
+    # Port scan
+    results["ports"] = port_scan.scan(domain)
+
+    # Tech stack detection
+    results["tech"] = tech_detect.detect(domain)
 
     return results
 
